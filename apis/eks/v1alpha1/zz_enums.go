@@ -35,6 +35,13 @@ const (
 	AMITypes_WINDOWS_FULL_2022_x86_64   AMITypes = "WINDOWS_FULL_2022_x86_64"
 )
 
+type AccessScopeType string
+
+const (
+	AccessScopeType_cluster   AccessScopeType = "cluster"
+	AccessScopeType_namespace AccessScopeType = "namespace"
+)
+
 type AddonIssueCode string
 
 const (
@@ -61,6 +68,14 @@ const (
 	AddonStatus_SDK_UPDATE_FAILED AddonStatus_SDK = "UPDATE_FAILED"
 )
 
+type AuthenticationMode string
+
+const (
+	AuthenticationMode_API                AuthenticationMode = "API"
+	AuthenticationMode_API_AND_CONFIG_MAP AuthenticationMode = "API_AND_CONFIG_MAP"
+	AuthenticationMode_CONFIG_MAP         AuthenticationMode = "CONFIG_MAP"
+)
+
 type CapacityTypes string
 
 const (
@@ -68,15 +83,34 @@ const (
 	CapacityTypes_SPOT      CapacityTypes = "SPOT"
 )
 
+type Category string
+
+const (
+	Category_UPGRADE_READINESS Category = "UPGRADE_READINESS"
+)
+
 type ClusterIssueCode string
 
 const (
-	ClusterIssueCode_AccessDenied          ClusterIssueCode = "AccessDenied"
-	ClusterIssueCode_ClusterUnreachable    ClusterIssueCode = "ClusterUnreachable"
-	ClusterIssueCode_ConfigurationConflict ClusterIssueCode = "ConfigurationConflict"
-	ClusterIssueCode_InternalFailure       ClusterIssueCode = "InternalFailure"
-	ClusterIssueCode_ResourceLimitExceeded ClusterIssueCode = "ResourceLimitExceeded"
-	ClusterIssueCode_ResourceNotFound      ClusterIssueCode = "ResourceNotFound"
+	ClusterIssueCode_AccessDenied                ClusterIssueCode = "AccessDenied"
+	ClusterIssueCode_ClusterUnreachable          ClusterIssueCode = "ClusterUnreachable"
+	ClusterIssueCode_ConfigurationConflict       ClusterIssueCode = "ConfigurationConflict"
+	ClusterIssueCode_InternalFailure             ClusterIssueCode = "InternalFailure"
+	ClusterIssueCode_ResourceLimitExceeded       ClusterIssueCode = "ResourceLimitExceeded"
+	ClusterIssueCode_ResourceNotFound            ClusterIssueCode = "ResourceNotFound"
+	ClusterIssueCode_IamRoleNotFound             ClusterIssueCode = "IamRoleNotFound"
+	ClusterIssueCode_VpcNotFound                 ClusterIssueCode = "VpcNotFound"
+	ClusterIssueCode_InsufficientFreeAddresses   ClusterIssueCode = "InsufficientFreeAddresses"
+	ClusterIssueCode_Ec2ServiceNotSubscribed     ClusterIssueCode = "Ec2ServiceNotSubscribed"
+	ClusterIssueCode_Ec2SubnetNotFound           ClusterIssueCode = "Ec2SubnetNotFound"
+	ClusterIssueCode_Ec2SecurityGroupNotFound    ClusterIssueCode = "Ec2SecurityGroupNotFound"
+	ClusterIssueCode_KmsGrantRevoked             ClusterIssueCode = "KmsGrantRevoked"
+	ClusterIssueCode_KmsKeyNotFound              ClusterIssueCode = "KmsKeyNotFound"
+	ClusterIssueCode_KmsKeyMarkedForDeletion     ClusterIssueCode = "KmsKeyMarkedForDeletion"
+	ClusterIssueCode_KmsKeyDisabled              ClusterIssueCode = "KmsKeyDisabled"
+	ClusterIssueCode_StsRegionalEndpointDisabled ClusterIssueCode = "StsRegionalEndpointDisabled"
+	ClusterIssueCode_UnsupportedVersion          ClusterIssueCode = "UnsupportedVersion"
+	ClusterIssueCode_Other                       ClusterIssueCode = "Other"
 )
 
 type ClusterStatus string
@@ -110,6 +144,29 @@ const (
 	ConnectorConfigProvider_RANCHER      ConnectorConfigProvider = "RANCHER"
 	ConnectorConfigProvider_EC2          ConnectorConfigProvider = "EC2"
 	ConnectorConfigProvider_OTHER        ConnectorConfigProvider = "OTHER"
+)
+
+type EKSAnywhereSubscriptionLicenseType string
+
+const (
+	EKSAnywhereSubscriptionLicenseType_Cluster EKSAnywhereSubscriptionLicenseType = "Cluster"
+)
+
+type EKSAnywhereSubscriptionStatus string
+
+const (
+	EKSAnywhereSubscriptionStatus_CREATING EKSAnywhereSubscriptionStatus = "CREATING"
+	EKSAnywhereSubscriptionStatus_ACTIVE   EKSAnywhereSubscriptionStatus = "ACTIVE"
+	EKSAnywhereSubscriptionStatus_UPDATING EKSAnywhereSubscriptionStatus = "UPDATING"
+	EKSAnywhereSubscriptionStatus_EXPIRING EKSAnywhereSubscriptionStatus = "EXPIRING"
+	EKSAnywhereSubscriptionStatus_EXPIRED  EKSAnywhereSubscriptionStatus = "EXPIRED"
+	EKSAnywhereSubscriptionStatus_DELETING EKSAnywhereSubscriptionStatus = "DELETING"
+)
+
+type EKSAnywhereSubscriptionTermUnit string
+
+const (
+	EKSAnywhereSubscriptionTermUnit_MONTHS EKSAnywhereSubscriptionTermUnit = "MONTHS"
 )
 
 type ErrorCode string
@@ -149,6 +206,15 @@ type IPFamily string
 const (
 	IPFamily_ipv4 IPFamily = "ipv4"
 	IPFamily_ipv6 IPFamily = "ipv6"
+)
+
+type InsightStatusValue string
+
+const (
+	InsightStatusValue_PASSING InsightStatusValue = "PASSING"
+	InsightStatusValue_WARNING InsightStatusValue = "WARNING"
+	InsightStatusValue_ERROR   InsightStatusValue = "ERROR"
+	InsightStatusValue_UNKNOWN InsightStatusValue = "UNKNOWN"
 )
 
 type LogType string
@@ -253,6 +319,10 @@ const (
 	UpdateParamType_ResolveConflicts         UpdateParamType = "ResolveConflicts"
 	UpdateParamType_MaxUnavailable           UpdateParamType = "MaxUnavailable"
 	UpdateParamType_MaxUnavailablePercentage UpdateParamType = "MaxUnavailablePercentage"
+	UpdateParamType_ConfigurationValues      UpdateParamType = "ConfigurationValues"
+	UpdateParamType_SecurityGroups           UpdateParamType = "SecurityGroups"
+	UpdateParamType_Subnets                  UpdateParamType = "Subnets"
+	UpdateParamType_AuthenticationMode       UpdateParamType = "AuthenticationMode"
 )
 
 type UpdateStatus string
@@ -275,4 +345,6 @@ const (
 	UpdateType_DisassociateIdentityProviderConfig UpdateType = "DisassociateIdentityProviderConfig"
 	UpdateType_AssociateEncryptionConfig          UpdateType = "AssociateEncryptionConfig"
 	UpdateType_AddonUpdate                        UpdateType = "AddonUpdate"
+	UpdateType_VpcConfigUpdate                    UpdateType = "VpcConfigUpdate"
+	UpdateType_AccessConfigUpdate                 UpdateType = "AccessConfigUpdate"
 )

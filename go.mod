@@ -3,8 +3,8 @@ module github.com/crossplane-contrib/provider-aws
 go 1.21
 
 require (
-	github.com/aws-controllers-k8s/code-generator v0.26.1
-	github.com/aws/aws-sdk-go v1.44.334
+	github.com/aws-controllers-k8s/code-generator v0.29.1
+	github.com/aws/aws-sdk-go v1.50.4
 	github.com/aws/aws-sdk-go-v2 v1.19.0
 	github.com/aws/aws-sdk-go-v2/config v1.11.1
 	github.com/aws/aws-sdk-go-v2/credentials v1.6.5
